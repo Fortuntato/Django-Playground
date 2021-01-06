@@ -23,4 +23,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('shouyi/', jobs.views.shouyi, name='shouyi'),
     path('', jobs.views.home, name="home")
-]
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
