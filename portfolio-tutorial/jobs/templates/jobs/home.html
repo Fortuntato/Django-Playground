@@ -1,1 +1,7 @@
-Welcome Home!
+<h1>All my jobs</h1>
+
+{% for job in jobs.all %}
+
+<img src="{{job.image}}"></img>
+<p>job.summary</p>
+{% endfor %}
