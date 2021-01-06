@@ -9,6 +9,7 @@
 
 <!doctype html>
 <html lang="en">
+    {% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,6 +65,7 @@
         <p>
           <a href="mailto:anemail@example.com" class="btn btn-secondary my-2">EMAIL ME!</a>
         </p>
+        <img src="{% static 'profilepic.jpg' %}" height=300></img>
       </div>
     </div>
   </section>
