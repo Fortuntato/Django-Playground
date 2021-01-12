@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import HashForm
 from .models import Hash
 import hashlib
-from django import JsonResponse
+from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
