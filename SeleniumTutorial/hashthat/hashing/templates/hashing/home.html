@@ -3,3 +3,22 @@
     {{ form.as_p }}
     <input name="submit" type="submit" value="Submit hash">
 </form>
+
+<h2 id='quickhash'></h2>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('#id_text').keyup(function (){
+        var inputText = $(this).val();
+        $.ajax({
+            url:'/quickhash',
+            data:{
+                'text': inputText
+            },
+            dataType:'json',
+            success: function(data){
+                $('#quickhash').text(data['hash']);
+            }
+        });
+    });
+</script>
