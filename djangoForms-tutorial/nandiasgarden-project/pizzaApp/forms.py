@@ -11,10 +11,13 @@ class PizzaForm(forms.ModelForm):
 
     # size = forms.ModelChoiceField(queryset=Size.objects, empty_label=None, widget=forms.RadioSelect)
     
-    image = forms.ImageField() 
+    # image = forms.ImageField() 
      
     class Meta:
         model = Pizza
         fields = ['topping1','topping2','size']
         labels = {'topping1':'Topping 1', 'topping2':'Topping 2'}
-        widgets = {'size':forms.CheckboxSelectMultiple}
+        widgets = {'size':forms.Select}
+
+class MultiplePizzaForm(forms.Form):
+    number = forms.IntegerField(min_value=2, max_value=6)
