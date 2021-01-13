@@ -1,3 +1,10 @@
-<h1>Welcome to NANDIA'S GARDEN</h1>
+{%extends 'pizza/base.html'%}
+{% block 'body' %}
 
-<a href="{% url 'order' %}">Order a pizza</a>
+<div class="text-center">
+
+    {% load static %}
+    <img src="{%static 'security-types_of_hackers_hats-f.png' %}" class="img-fluid" alt="Nandia's Garden">
+    <a href="{% url 'order' %}">Order a pizza</a>
+</div>
+{% endblock %}

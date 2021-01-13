@@ -1,15 +1,27 @@
-<h1>Order a pizza!</h1>
-<h2>{{ note }}</h2>
+{%extends 'pizza/base.html'%}
+{% block 'body' %}
+{% load widget_tweaks %}
 
-{% if created_pizza_pk %}
-<a href="{% url 'edit_order' created_pizza_pk %}">Edit your order</a>
+<div class="container">
 
-{% endif %}
+    <h1>Order a pizza!</h1>
+    <h2>{{ note }}</h2>
 
-<form action="{% url 'order' %}" method="POST">
-    {% csrf_token %}
-    {{ pizzaform }}
-    <!-- <label for ="topping1">Topping 1:</label>
+    {% if created_pizza_pk %}
+    <a href="{% url 'edit_order' created_pizza_pk %}">Edit your order</a>
+
+    {% endif %}
+
+    <form action="{% url 'order' %}" method="POST">
+        {% csrf_token %}
+        {% for field in pizzaform %}
+        <div class="form-group">
+            {{field.errors}}
+            {{field.label_tag}}
+            {% render_field field class="form-control" %}
+        </div>
+        {% endfor %}
+        <!-- <label for ="topping1">Topping 1:</label>
     <input id="topping1" type="text" name="topping1Name">
     <label for ="topping2">Topping 2:</label>
     <input id="topping2" type="text" name="topping2Name">
@@ -19,14 +31,16 @@
         <option value="medium">Medium</option>
         <option value="large">Large</option>
     </select> -->
-    <input type="submit" value="Order Pizza">
-</form>
+        <input type="submit" value="Order Pizza">
+    </form>
 
-<br><br>
-Want more than one pizza?
+    <br><br>
+    Want more than one pizza?
 
-<form action="{% url 'pizzas' %}" method="GET">
+    <form action="{% url 'pizzas' %}" method="GET">
 
-    {{ multiple_form }}
-    <input type="submit" value="Get Pizzas">
-</form>
+        {{ multiple_form }}
+        <input type="submit" value="Get Pizzas">
+    </form>
+</div>
+{% endblock %}
